@@ -8,3 +8,19 @@ nurodomas gamintojas ir jo pagaminti modeliai.
 Pastaba: Informacija apie automobilį (brand) (jo kortelė) bei turi turėti 
 bent minimalų stilių;
 -------------------------------------------------------------------------- */
+document.addEventListener("DOMContentLoaded", function () {
+  const carList = document.getElementById("output");
+
+  fetch("cars.json")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((car) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${car.brand} And he have models: ${car.models};`;
+        carList.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+});
