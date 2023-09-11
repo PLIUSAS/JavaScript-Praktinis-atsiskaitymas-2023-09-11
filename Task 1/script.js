@@ -8,3 +8,26 @@ pamatyti jo pateikto svorio kovertavimą į:
 Pastaba: atvaizdavimas turi būti matomas pateikus formą ir pateikiamas
 <div id="output"></div> viduje, bei turi turėti bent minimalų stilių;
 ------------------------------------------------------------------- */
+document.querySelector("form").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const value = parseFloat(document.getElementById("search").value);
+  const unit = document.getElementById("unit").value;
+  const result = converToKilograms(value, unit);
+
+  document.getElementById(
+    "output"
+  ).textContent = `${value} ${unit} yra lygus ${result} kilograms`;
+});
+
+function convertToKilograms(value, unit) {
+  if (unit === "Svaru") {
+    return value * 2.2046;
+  } else if (unit === "Gramu") {
+    return value / 0.001;
+  } else if (unit === "Uncijos") {
+    return value * 35.274;
+  } else {
+    return "Unsupported unit";
+  }
+}
