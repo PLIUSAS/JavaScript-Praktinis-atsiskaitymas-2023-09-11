@@ -24,7 +24,7 @@ function filterDogOwners(users) {
   if (!Array.isArray(users)) {
     throw new Error("Input is not an array.");
   }
-  const dogOwners = users.filter((users) => users.hasDog && users.hasDog);
+  const dogOwners = users.filter((users) => users.hasDog);
 
   return dogOwners;
 }
